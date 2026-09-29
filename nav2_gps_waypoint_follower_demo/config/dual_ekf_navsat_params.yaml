@@ -10,7 +10,7 @@ ekf_filter_node_odom:
 
     map_frame: map
     odom_frame: odom
-    base_link_frame: base_footprint # the frame id used by the turtlebot's diff drive plugin
+    base_link_frame: base_link # the frame id used by the turtlebot's diff drive plugin
     world_frame: odom
 
     odom0: odom
@@ -58,7 +58,7 @@ ekf_filter_node_map:
     two_d_mode: true  # Recommended to use 2d mode for nav2 in mostly planar environments
     print_diagnostics: true
     debug: false
-    publish_tf: true
+    publish_tf: false
 
     map_frame: map
     odom_frame: odom
@@ -66,7 +66,7 @@ ekf_filter_node_map:
     world_frame: map
 
     odom0: odom
-    odom0_config: [false, false, false,
+    odom0_config: [true, true, false,
                   false, false, false,
                   true,  true,  true,
                   false, false, true,

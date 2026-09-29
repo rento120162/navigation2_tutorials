@@ -12,6 +12,13 @@ mapviz_config_file = os.path.join(gps_wpf_dir, "config", "gps_wpf_demo.mvc")
 def generate_launch_description():
     return launch.LaunchDescription([
         launch_ros.actions.Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='map_to_odom_broadcaster',
+            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'map', 'odom'],
+            output='screen'
+        ),
+        launch_ros.actions.Node(
             package="mapviz",
             executable="mapviz",
             name="mapviz",
@@ -24,20 +31,5 @@ def generate_launch_description():
             remappings=[
                 ("fix", "gps/fix"),
             ],
-        ),
-        launch_ros.actions.Node(
-            package="tf2_ros",
-            executable="static_transform_publisher",
-            name="swri_transform",
-            arguments=[
-                '--x', '0',
-                '--y', '0',
-                '--z', '0',
-                '--roll', '0',
-                '--pitch', '0',
-                '--yaw', '0',
-                '--frame-id', 'map',
-                '--child-frame-id', 'origin'
-            ]
         )
     ])
