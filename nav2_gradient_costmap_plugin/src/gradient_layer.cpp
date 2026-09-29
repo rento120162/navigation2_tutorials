@@ -68,7 +68,7 @@ void
 GradientLayer::onInitialize()
 {
   auto node = node_.lock();
-  node->declare_or_get_parameter(name_ + "." + "enabled", true);
+  node->declare_parameter(name_ + "." + "enabled", true);
 
   need_recalculation_ = false;
   current_ = true;
